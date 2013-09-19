@@ -1,0 +1,44 @@
+@(createGnomeForm: Form[Admin.CreateGnome])
+@import helper._
+@import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@main(title="Gnome factory") {
+  @helper.form(routes.Admin.createGnomeType, 'class -> "form-horizontal") {
+  	 <fieldset>
+  	 	<legend>Gnome Factory</legend>
+		@inputText(
+			createGnomeForm("type"), 
+			'_label -> "type",
+			'_help -> ""
+		)
+
+		@textarea(
+			createGnomeForm("description"), 
+			'_label -> "description",
+			'_help -> ""
+		)
+
+		@inputText(
+			createGnomeForm("price"), 
+			'_label -> "price",
+			'_help -> ""
+		)
+
+		@inputText(
+			createGnomeForm("quantity"), 
+			'_label -> "quantity",
+			'_help -> ""
+		)
+
+        <div class="control-group">
+    		<div class="controls">
+    			<button type="submit" class="btn">Create</button>
+    			<a class="btn btn-primary" href="@routes.Admin.adminpage()">Cancel</a>
+    		</div>
+        </div>
+  	  </fieldset>
+
+  }
+  
+}

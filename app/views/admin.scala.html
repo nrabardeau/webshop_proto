@@ -1,0 +1,52 @@
+@(allGnomes : List[Gnome], allUsers: List[User])
+
+@main(title="Admin", "admin"){
+  	<div class="row">
+  		<div class="span7">
+ 			<a class="btn btn-primary" id="add-gnome-button" href="@routes.Admin.getCreateGnomeType()">Add new gnome type</a> 			
+  				@for(gnome <- allGnomes){
+  				<div class="gnome">
+  				<h3>@gnome.getType()</h3>
+				<p>@gnome.getDescritpion()</p>
+				<p>Price: @gnome.getPrice()$<br>Avalaible quantity: @gnome.getQuantity()</p>
+				<form action="/admin/gnome/@gnome.getId()" method="GET" class="form-inline">
+					<input class="span1" name="quantity"> </input>
+					<button class="btn btn-primary" type="submit">Add gnomes to stock</button>
+				</form>
+				<a class="btn" href="@routes.Admin.removeGnomeType(gnome.getId())">Remove gnome type</a>
+				</div>
+			}
+  		</div>
+  		<div class="span5">
+  			<table class="table">
+  				<thead>
+  					<tr>
+						<th>User Name</th>
+						<th>Banned</th>
+					</tr>
+  				</thead>
+  				<tbody>
+			@for(user <- allUsers){
+				@if(!user.isAdmin()) {
+					<tr>
+						<td>@user.getUsername()</td>
+						
+				  @if(user.isBanned()){
+				  		<td>YES</td>
+				  		<td><a class="btn btn-primary" href="/admin/user/unban/@user.getUsername()">Unban</a></td>
+				  		</tr>
+				  }else{
+				  		<td>NO</td>
+				  		<td> <a class="btn" href="/admin/user/ban/@user.getUsername()">Ban</a></td>
+				  		</tr>
+				}				
+			} 			
+		}
+				</tbody>
+
+			</table>
+  		</div>
+
+ 	</div>
+
+}

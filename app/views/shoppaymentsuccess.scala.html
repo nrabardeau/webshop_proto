@@ -1,0 +1,6 @@
+@(user: User)
+
+@main(title="Payment succesfully executed",user.getUsername()){
+  <h2>Success!</h2>
+  <p>Your payment has been successfully executed. A confirmation mail has been sent to <strong>@user.getEmail()</strong> <br>You can continue <a href="@routes.Shop.getShop()">shopping</a>.</p>
+}

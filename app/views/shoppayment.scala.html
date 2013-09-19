@@ -1,0 +1,90 @@
+@(formP: Form[Shop.Payment], orders: List[Order], username: String)
+
+@import helper._
+@import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@main(title="Payment",username){
+	<div class="row">
+		<div class="span7">
+			<div class="payment">
+			 <h2> Payment </h2>
+				@helper.form(routes.Shop.buy, 'class -> "form-horizontal") {
+					<fieldset>
+				<legend>Shipment</legend>
+					@inputText(
+						formP("firstname"),
+						'_label -> "First name",
+						'_help -> ""
+					)
+					@inputText(
+						formP("lastname"),
+						'_label -> "Last name",
+						'_help -> ""
+					)
+			    @inputText(
+						formP("address"),
+						'_label -> "Address",
+						'_help -> ""
+					)
+			    @inputText(
+						formP("city"),
+						'_label -> "City",
+						'_help -> ""
+					)
+			    @inputText(
+						formP("postalcode"),
+						'_label -> "Postal code",
+						'_help -> ""
+					)
+				</fieldset>
+			<fieldset>
+				<legend>Bank information</legend>
+					@inputText(
+						formP("cartnumber"),
+						'_label -> "Cart number",
+						'_help -> ""
+					)
+					@inputText(
+						formP("secretcode"),
+						'_label -> "Secret code",
+						'_help -> ""
+					)
+				</fieldset>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-primary">Pay</button>
+					<a class="btn" href="@routes.Shop.getShop()">Cancel</a>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="span5">
+			<h2>Shopping Cart</h2>
+			<div class="shopping-cart">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Gnome type</th>
+							<th>Quantity</th>
+							<th>Total price ($)</th>
+						</tr>
+					</thead>
+					<tbody>
+						@for(order <- orders){
+							<tr>
+							<td>@order.getGnome().getType()</td>
+							<td>@order.getN()</td>
+							<td>@(order.getN()*order.getGnome().getPrice())</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+				<p class="totalprice">Total price: <strong>@(orders.foldLeft(0){(acc,el) => acc+el.getN()*el.getGnome().getPrice()}) $</strong></p>
+				<p>
+			</div>
+		</div>
+	</div>
+
+			}
+}

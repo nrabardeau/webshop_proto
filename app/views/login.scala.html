@@ -1,0 +1,30 @@
+@(loginForm: Form[Application.Login])
+@import helper._
+@import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@main(title="Hello") {
+	<p id="welcome">Welcome to the new <strong>Gnome</strong> Webshop</p>
+		    @helper.form(routes.Application.login, 'class -> "form-horizontal") {
+		        <fieldset>
+		        	<legend>Login</legend>
+		            @inputText(
+						loginForm("username"), 
+						'_label -> "Username",
+						'_help -> ""
+					)
+		            @inputPassword(
+						loginForm("password"), 
+						'_label -> "Password",
+						'_help -> ""
+					)
+				</fieldset> 
+		        <div class="control-group">
+		    		<div class="controls">
+		    			<button type="submit" class="btn">Sign in</button>
+		    		</div>
+		        </div>    
+			}
+	<p id="or">Or if you are new, please <a href="@routes.Application.getSignup">Sign Up</a></p>
+	
+}

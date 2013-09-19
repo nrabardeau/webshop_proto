@@ -1,0 +1,61 @@
+@(orders: List[Order], username: String, allGnomes : List[Gnome])
+
+@main(title="Shopping page",username) {
+	<div class="row">
+		<div class="span7">
+		@for(gnome <- allGnomes){
+				<div class="gnome">
+					<h3>@gnome.getType()</h3>
+					<p>@gnome.getDescritpion()</p>
+					<p>Price: @gnome.getPrice()$<br>Avalaible quantity: @gnome.getQuantity()</p>
+					<p>
+						<form action="/shop/cart/gnome/@gnome.getId()" method="get" class="form-inline">
+							@if(gnome.getQuantity() > 0){
+								<select name="quantity" class="span1">
+									@for(i <- 1 to gnome.getQuantity()){
+									<option value=@i>@i</option>
+									}
+								</select>
+								<button class="btn btn-primary" type="submit">Add to shoppping cart</button>								
+							}else{
+							<p><strong>Out of stock!</strong></p>
+							}
+	
+						</form>
+					</p>
+				</div>
+			}
+		</div>
+		<div class="span5">
+			<h2>Shopping Cart</h2>
+			<div class="shopping-cart">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Gnome type</th>
+							<th>Quantity</th>
+							<th>Total price ($)</th>
+						</tr>
+					</thead>
+					<tbody>
+						@for(order <- orders){
+							<tr>
+							<td>@order.getGnome().getType()</td>
+							<td>@order.getN()</td>
+							<td>@(order.getN()*order.getGnome().getPrice())</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+				<p class="totalprice">Total price: <strong>@(orders.foldLeft(0){(acc,el) => acc+el.getN()*el.getGnome().getPrice()}) $</strong></p>
+				<p>
+				  <a class="btn btn-primary" href="@routes.Shop.getBuy()">Buy</a>
+				  <a class="btn" href="@routes.Shop.emptyCart()">Empty cart</a>
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	}

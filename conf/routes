@@ -1,0 +1,34 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                         			controllers.Application.index()
+
+GET		/login								controllers.Application.getLogin()
+POST	/login								controllers.Application.login()
+GET		/signup								controllers.Application.getSignup()
+POST 	/signup								controllers.Application.signup()
+GET		/logout								controllers.Application.logout()
+
+GET		/shop/cart/gnome/$id<[0-9]+>		controllers.Shop.addGnome(id: Long, quantity: Int)
+GET 	/shop 								controllers.Shop.getShop()
+
+GET 	/shop/cart/payment					controllers.Shop.getBuy()
+POST	/shop/cart/payment					controllers.Shop.buy()
+GET 	/shop/cart/paymentSuccess			controllers.Shop.paymentSuccess()
+
+GET		/shop/cart/empty					controllers.Shop.emptyCart()
+
+GET		/admin								controllers.Admin.adminpage()
+GET		/admin/user/unban/:username			controllers.Admin.unban(username)
+GET		/admin/user/ban/:username			controllers.Admin.ban(username)
+
+GET		/admin/gnome						controllers.Admin.getCreateGnomeType()
+POST	/admin/gnome						controllers.Admin.createGnomeType()
+GET		/admin/gnome/:id					controllers.Admin.addGnomesToStock(id: Long, quantity: Int)
+GET		/admin/gnome/delete/:id				controllers.Admin.removeGnomeType(id: Long)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               		controllers.Assets.at(path="/public", file)

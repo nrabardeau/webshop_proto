@@ -1,0 +1,51 @@
+
+# Users
+
+users:
+
+    - !!models.User
+        email:      tamborrino.alexandre@gmail.com
+        username:   atamborrino
+        password:   azerty
+        isBanned:   false
+    
+    - !!models.User
+        email:      nrabardeau@gmail.com
+        username:   nrabardeau
+        password:   azerty
+        isBanned:   false
+    
+    - !!models.User
+        email:      admin@gmail.com
+        username:   admin
+        password:   theadmin
+        isAdmin:    true
+    
+# Gnomes
+
+gnomes:
+    
+    - !!models.Gnome
+        type:           Mountain gnomes
+        descritpion:    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        price:          20
+        quantity:       5
+
+    - !!models.Gnome
+        type:           Forest gnomes
+        descritpion:    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        price:          25
+        quantity:       10
+        
+    - !!models.Gnome
+        type:           University gnomes
+        descritpion:    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        price:          7
+        quantity:       12
+
+    - !!models.Gnome
+        type:           Sea gnomes
+        descritpion:    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        price:          50
+        quantity:       9
+        

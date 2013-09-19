@@ -1,0 +1,52 @@
+body { 
+	 padding-top: 80px;
+}
+
+#welcome {
+	font-size: 30px;
+	line-height: 30px;
+	padding-bottom: 50px;
+	/*text-align: center;*/
+}
+
+#or {
+	font-size: 20px;
+	padding-top: 50px;
+	/*text-align: center;*/
+}
+
+.gnome {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 7px;
+	padding-top: 7px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 40px;
+	margin-left: 20px;
+	background-color:rgba(0, 0, 0, 0.11);
+	border-radius: 15px;
+}
+
+.shopping-cart {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+#title-gnomes {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#add-gnome-button {
+	margin-left: 40px;
+	margin-top: 10px; 
+}
+
+.payment {
+	margin-right: 40px;
+}
+
+.totalprice {
+	font-size: 17px;
+}
